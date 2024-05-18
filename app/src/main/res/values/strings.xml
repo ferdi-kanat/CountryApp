@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CountryApp</string>
+    <string name="errorTV">errorTV</string>
+</resources>
