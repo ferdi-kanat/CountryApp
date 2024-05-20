@@ -9,7 +9,7 @@ import com.ferdikanat.countryapp.R
 import com.ferdikanat.countryapp.databinding.ItemCountryBinding
 import com.ferdikanat.countryapp.model.Country
 import com.ferdikanat.countryapp.util.downloadURL
-class CountryAdapter(var countryList: ArrayList<Country>): RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter(var countryList: ArrayList<Country>, private var onClick:(position: Int) -> Unit): RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     class CountryViewHolder(var view: ItemCountryBinding): RecyclerView.ViewHolder(view.root)
 
@@ -30,6 +30,9 @@ class CountryAdapter(var countryList: ArrayList<Country>): RecyclerView.Adapter<
         holder.view.countryTV.text = countryList[position].name
         holder.view.regionTV.text = countryList[position].region
         holder.view.countryIV.downloadURL(countryList[position].flagUrl)
+        holder.view.cvItem.setOnClickListener{
+            onClick(position)
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
